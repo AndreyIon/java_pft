@@ -1,6 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'application'
-mainClassName = "MyFirstProgram"
 
 repositories {
     mavenCentral()
@@ -9,6 +7,7 @@ repositories {
 dependencies {
     implementation 'org.testng:testng:7.9.0';
     implementation "org.slf4j:slf4j-simple:2.0.12"
+    implementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
 }
 
 test {
