@@ -1,13 +1,17 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.Browser;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
 public class ApplicationManager {
+  private final String browser;
   WebDriver driver;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
@@ -16,8 +20,19 @@ public class ApplicationManager {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
+  public ApplicationManager(String browser) {
+
+    this.browser = browser;
+  }
+
   public void init() {
-    driver = new FirefoxDriver();
+    if (browser.equals (String.valueOf(Browser.FIREFOX))) {
+      driver = new FirefoxDriver();
+    } else if (browser.equals(String.valueOf(Browser.CHROME))) {
+      driver = new ChromeDriver();
+    } else if (browser.equals(String.valueOf(Browser.IE))) {
+      driver = new InternetExplorerDriver();
+    }
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/group.php");
