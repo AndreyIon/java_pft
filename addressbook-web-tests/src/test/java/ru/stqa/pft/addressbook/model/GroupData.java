@@ -51,15 +51,4 @@ public class GroupData {
     return Objects.hash(id, name);
   }
 
-  public String name() {
-    return null;
-  }
-
-  public String header() {
-    return null;
-  }
-
-  public String footer() {
-    return null;
-  }
 }
